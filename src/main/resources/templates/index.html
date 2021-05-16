@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flight Booking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/main.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Choose your flights</h2>
+
+    <div class="form-group" id="flight-form">
+        <label for="depPointInput">Where you traveling from?:</label>
+        <select class="form-control" id="depPointInput">
+
+        </select>
+        <br>
+        <label for="destPointInput">Where you traveling to?</label>
+        <select class="form-control" id="destPointInput">
+        </select>
+
+        <label class="checkbox-inline" id="box">
+
+        </label>
+
+    </div>
+    <div class="form-btn" id="findFlightBtn">
+        <button class="submit-btn">Show flights</button>
+    </div>
+
+</div>
+
+<div id="booking" class="section">
+    <div class="section-center">
+        <div class="container" id="tableContainer">
+            <table class="table table-active table-striped" id="flight-table" style="background-color: white">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>DEPARTURE</th>
+                    <th>DESTINATION</th>
+                    <th>COMPANY</th>
+                    <th>PRICE</th>
+                    <th>DISTANCE</th>
+                    <th>TIME</th>
+                </tr>
+                </thead>
+
+                <tbody ID="table-body">
+                <tr id="table-row" class="table-info">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+<!--            <div class="panel panel-default" id="panel">-->
+<!--                <div class="panel-body"><h4>Total distance <small id="distanceSpan"></small></h4>-->
+<!--                </div>-->
+<!--                <div class="panel-footer"><h4>Total price <small id="priceSpan"></small></h4>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="panel panel-default" id="myPanel">
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
