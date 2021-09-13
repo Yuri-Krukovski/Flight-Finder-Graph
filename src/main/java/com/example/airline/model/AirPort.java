@@ -1,8 +1,5 @@
 package com.example.airline.model;
 
-
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -31,7 +28,6 @@ public class AirPort extends AbstractEntity {
     public AirPort() {
     }
 
-
     @Override
     public Long getId() {
         return id;
@@ -44,7 +40,6 @@ public class AirPort extends AbstractEntity {
     public void setName(String name) {
         this.name = name;
     }
-
 
     @Override
     public String toString() {

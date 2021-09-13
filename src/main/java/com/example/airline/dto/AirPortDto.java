@@ -5,7 +5,6 @@ public class AirPortDto extends AbstractDto {
     private Long id;
     private String name;
 
-
     public AirPortDto(String name) {
         this.name = name;
     }
@@ -28,7 +27,6 @@ public class AirPortDto extends AbstractDto {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     @Override
     public String toString() {

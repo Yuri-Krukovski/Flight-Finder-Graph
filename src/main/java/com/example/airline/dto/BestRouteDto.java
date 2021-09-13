@@ -1,10 +1,8 @@
 package com.example.airline.dto;
 
-import com.example.airline.model.AviaRace;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class BestRouteDto {
 
@@ -12,7 +10,6 @@ public class BestRouteDto {
 
     private int totalPrice;
     private int totalDistance;
-
 
     public BestRouteDto() {
         this.dtoList = new ArrayList<>();

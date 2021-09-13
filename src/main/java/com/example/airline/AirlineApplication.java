@@ -25,6 +25,4 @@ public class AirlineApplication {
                 .setFieldAccessLevel(PRIVATE);
         return mapper;
     }
-
-
 }
