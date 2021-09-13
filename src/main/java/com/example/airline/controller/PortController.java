@@ -16,12 +16,12 @@ public class PortController {
     private PortService portService;
 
     @Autowired
-    public PortController(PortService service){
+    public PortController(PortService service) {
         this.portService = service;
     }
 
     @GetMapping
-    public List<AirPortDto> getAllPorts(){
+    public List<AirPortDto> getAllPorts() {
         return portService.findAll();
     }
 }
