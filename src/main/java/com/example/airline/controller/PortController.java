@@ -1,7 +1,6 @@
-package com.example.airline.cotroller;
+package com.example.airline.controller;
 
 import com.example.airline.dto.AirPortDto;
-import com.example.airline.model.AirPort;
 import com.example.airline.service.PortService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +25,4 @@ public class PortController {
     public List<AirPortDto> getAllPorts(){
         return portService.findAll();
     }
-
-
-
 }

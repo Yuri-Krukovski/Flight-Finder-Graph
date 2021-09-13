@@ -1,4 +1,4 @@
-package com.example.airline.cotroller;
+package com.example.airline.controller;
 
 
 import com.example.airline.dto.AviaRaceDto;
@@ -29,16 +29,15 @@ public class AviaController {
     }
 
     @GetMapping("/")
-    public List<AviaRaceDto> findAll() {
-
-        return aviaService.findAll();
+    public ResponseEntity<?> findAll() {
+        return ResponseEntity.ok(aviaService.findAll());
     }
 
     @PostMapping("/find")
-    public List<BestRouteDto> findBestFlight(@RequestParam(value = "departurePoint") String departurePoint,
-                                       @RequestParam(value = "destinationPoint") String destinationPoint,
-                                       @RequestParam(value = "company") String[] company) {
-        return aviaService.findBestFlight(departurePoint, destinationPoint, Arrays.asList(company));
+    public ResponseEntity<?> findBestFlight(@RequestParam(value = "departurePoint") String departurePoint,
+                                            @RequestParam(value = "destinationPoint") String destinationPoint,
+                                            @RequestParam(value = "company") String[] company) {
+        return ResponseEntity.ok(aviaService.findBestFlight(departurePoint, destinationPoint, Arrays.asList(company)));
     }
 
     @GetMapping(value = "/{id}")
