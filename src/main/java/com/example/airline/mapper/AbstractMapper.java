@@ -65,9 +65,4 @@ public abstract class AbstractMapper <E extends AbstractEntity, D extends Abstra
 
     void mapSpecificFields(D source, E destination) {
     }
-
-
-
-
-
 }

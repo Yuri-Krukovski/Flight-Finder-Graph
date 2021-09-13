@@ -1,12 +1,10 @@
 package com.example.airline.service;
 
 import com.example.airline.dao.AirRepository;
-import com.example.airline.dao.CompanyRepository;
 import com.example.airline.dao.PortRepository;
 import com.example.airline.dto.AviaRaceDto;
 import com.example.airline.dto.BestRouteDto;
 import com.example.airline.mapper.AviaRaceMapper;
-import com.example.airline.mapper.PortMapper;
 import com.example.airline.model.AirPort;
 import com.example.airline.model.AviaRace;
 import org.jgrapht.GraphPath;
@@ -27,18 +25,15 @@ public class AviaService {
 
     private final AirRepository repository;
     private final PortRepository portRepository;
-    private final CompanyRepository companyRepository;
     private final AviaRaceMapper mapper;
-    private final PortMapper portMapper;
 
 
     @Autowired
-    public AviaService(AirRepository repository, AviaRaceMapper mapper, PortRepository portRepository, CompanyRepository companyRepository, PortMapper portMapper) {
+    public AviaService(AirRepository repository, AviaRaceMapper mapper, PortRepository portRepository) {
         this.mapper = mapper;
         this.repository = repository;
         this.portRepository = portRepository;
-        this.companyRepository = companyRepository;
-        this.portMapper = portMapper;
+
     }
 
     public List<BestRouteDto> findBestFlight(String departure, String destination, List<String> companySet) {
@@ -49,27 +44,23 @@ public class AviaService {
 
         List<AviaRaceDto> races = findAllByCompanyNameIn(companySet);
         //Construct graph from filtered collection
-        for (int i = 0; i < races.size(); i++) {
-            String vertex1 = races.get(i).getDeparturePoint();
-            String vertex2 = races.get(i).getDestinationPoint();
+        for (AviaRaceDto race : races) {
+            String vertex1 = race.getDeparturePoint();
+            String vertex2 = race.getDestinationPoint();
 
             graph.addVertex(vertex1);
             graph.addVertex(vertex2);
 
             DefaultWeightedEdge edge = graph.addEdge(vertex1, vertex2);
-            graph.setEdgeWeight(edge, races.get(i).getPrice());
+            graph.setEdgeWeight(edge, race.getPrice());
         }
-        System.out.println(graph);
-        System.out.println("Shortest path from A to B:");
 
         // Finds K shortest paths from constructed Flight Graph
         KShortestSimplePaths paths = new KShortestSimplePaths(graph);
-        List<GraphPath<String, DefaultWeightedEdge>> shortestPath = paths.getPaths(departure, destination, 5);
-        System.out.println(shortestPath);
+        List shortestPath = paths.getPaths(departure, destination, 5);
 
         List<BestRouteDto> aviaRaceDtos = populateFlightListFromGraphPath(shortestPath);
-
-        List<BestRouteDto> bestRouteDtoList = checkFligthTimes(aviaRaceDtos);
+        List<BestRouteDto> bestRouteDtoList = checkFlightTimes(aviaRaceDtos);
 
 
         return bestRouteDtoList;
@@ -91,11 +82,14 @@ public class AviaService {
         return bestRouteDtoList;
     }
 
-    private List<BestRouteDto> checkFligthTimes(List<BestRouteDto> aviaRaceDtoList) {
+    private List<BestRouteDto> checkFlightTimes(List<BestRouteDto> aviaRaceDtoList) {
         List<BestRouteDto> bestRouteDtoList = new ArrayList<>();
+
         for (int i = 0; i < aviaRaceDtoList.size(); i++) {
+
             BestRouteDto iterationList = aviaRaceDtoList.get(i);
             boolean flag = false;
+
             for (int j = 0; j < iterationList.getDtoList().size(); j++) {
                 AviaRaceDto aviaRaceDto1 = iterationList.getDtoList().get(j);
                 if (j == iterationList.getDtoList().size() - 1) {

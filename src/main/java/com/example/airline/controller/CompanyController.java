@@ -1,4 +1,4 @@
-package com.example.airline.cotroller;
+package com.example.airline.controller;
 
 import com.example.airline.dto.AirCompanyDto;
 import com.example.airline.service.CompanyService;

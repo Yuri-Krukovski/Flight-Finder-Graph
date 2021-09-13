@@ -14,8 +14,6 @@ public class AviaRaceDto extends AbstractDto implements Comparable<AviaRaceDto> 
     private int price;
     private String company;
 
-
-
     public AviaRaceDto() {
     }
 
@@ -93,8 +91,6 @@ public class AviaRaceDto extends AbstractDto implements Comparable<AviaRaceDto> 
                 ", price=" + price +
                 '}';
     }
-
-
 
     @Override
     public int compareTo(AviaRaceDto aviaRaceDto) {

@@ -5,7 +5,6 @@ public class AirCompanyDto extends AbstractDto {
     private Long id;
     private String name;
 
-
     public AirCompanyDto(String name) {
         this.name = name;
     }

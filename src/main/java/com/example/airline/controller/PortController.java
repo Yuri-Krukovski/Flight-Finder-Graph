@@ -1,7 +1,6 @@
-package com.example.airline.cotroller;
+package com.example.airline.controller;
 
 import com.example.airline.dto.AirPortDto;
-import com.example.airline.model.AirPort;
 import com.example.airline.service.PortService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,19 +13,15 @@ import java.util.List;
 @RequestMapping("/port")
 public class PortController {
 
-
     private PortService portService;
 
     @Autowired
-    public PortController(PortService service){
+    public PortController(PortService service) {
         this.portService = service;
     }
 
     @GetMapping
-    public List<AirPortDto> getAllPorts(){
+    public List<AirPortDto> getAllPorts() {
         return portService.findAll();
     }
-
-
-
 }

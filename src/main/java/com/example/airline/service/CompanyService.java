@@ -32,7 +32,6 @@ public class CompanyService {
         return companyRepository.findByName(name);
     }
 
-
     public List<AirCompanyDto> findAll() {
         return companyRepository
                 .findAll()
@@ -40,6 +39,4 @@ public class CompanyService {
                 .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
-
-
 }
